@@ -86,6 +86,11 @@ async def chat(req: ChatRequest):
     return StreamingResponse(stream(), media_type="text/event-stream")
 
 
+@app.get("/")
+async def root():
+    return {"status": "ok", "model": MODEL_ID, "device": DEVICE}
+
+
 @app.get("/health")
 async def health():
     return {"status": "ok", "device": DEVICE, "model": MODEL_ID}
